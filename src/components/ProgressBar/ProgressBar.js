@@ -30,11 +30,13 @@ const Wrapper = styled.progress`
     border-radius: var(--borderRadius);
     background-color: ${COLORS.transparentGray15};
     box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
+    /* overflow: hidden; */
   }
 
   &::-webkit-progress-value {
     background-color: ${COLORS.primary};
     border-radius: ${props => props.value <= +props.max - 2 ? '4px 0 0 4px' : '4px'};
+    /* border-radius: 4px 0 0 4px; */
   }
 `;
 
@@ -44,12 +46,14 @@ const CustomWrapper = styled.div`
   border-radius: var(--borderRadius);
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
   height: var(--hight);
+  /* overflow: hidden; */
 `;
 
 const Progress = styled.svg`
   width: 100%;
   height: 100%;
   border-radius: ${props => props.value <= +props.max - 2 ? '4px 0 0 4px' : '4px'};
+  /* border-radius: 4px 0 0 4px; */
   display: block;
 
   ::before {
