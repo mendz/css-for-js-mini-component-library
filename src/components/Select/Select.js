@@ -18,10 +18,20 @@ const Select = ({ label, value, onChange, children }) => {
           {children}
         </Options>
       </Wrapper>
+      <hr />
+      <Wrapper2>
+        <NativeSelect value={value} onChange={onChange}>
+          {children}
+        </NativeSelect>
+        <PresentationalBit>
+           {displayedValue} <DownArrow id={'chevron-down'} />
+        </PresentationalBit>
+      </Wrapper2>
     </>
   );
 };
 
+//#region first try
 const Label = styled.label`
   margin-right: 10px;
 `;
@@ -54,6 +64,45 @@ const Options = styled.select`
   border: 0;
   border-radius: 8px;
   color: inherit;
-
 `;
+//#endregion
+
+//#region second try after looking
+const Wrapper2 = styled.div`
+  display: inline-block;
+  position: relative;
+  padding: 12px 52px 12px 16px;
+  background-color: ${COLORS.transparentGray15};
+  width: fit-content;
+  border: 0;
+  border-radius: 8px;
+  color: ${COLORS.gray700};
+
+  :hover {
+    color: ${COLORS.black};
+  }
+`;
+
+const NativeSelect = styled.select`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+`;
+
+const PresentationalBit = styled.div`
+  white-space: nowrap;
+`;
+
+const DownArrow = styled(Icon)`
+  display: inline-block;
+  position: absolute;
+  pointer-events: none;
+  right: 16px;
+  top: 10px;
+`;
+
+//#endregion
 export default Select;
